@@ -1,7 +1,7 @@
 Summary:	A library of programming functions mainly aimed at real time computer vision
 Name:		OpenCV
 Version:	2.4.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD
 Group:		Libraries
@@ -9,8 +9,8 @@ Source0:	http://downloads.sourceforge.net/opencvlibrary/%{name}-%{version}.tar.b
 # Source0-md5:	059ef86fc1724d69b75832a0d2929ff5
 URL:		http://opencv.willowgarage.com
 BuildRequires:	cmake
-BuildRequires:	ffmpeg-devel
 BuildRequires:	jasper-devel
+BuildRequires:	libav-devel
 BuildRequires:	libdc1394-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -98,8 +98,8 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/opencv/samples
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post   libs -p /usr/sbin/ldconfig
+%postun libs -p /usr/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
