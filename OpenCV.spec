@@ -1,12 +1,12 @@
 Summary:	A library of programming functions mainly aimed at real time computer vision
 Name:		OpenCV
-Version:	2.4.2
-Release:	2
+Version:	2.4.4
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/opencvlibrary/%{name}-%{version}.tar.bz2
-# Source0-md5:	059ef86fc1724d69b75832a0d2929ff5
+Source0:	http://downloads.sourceforge.net/opencvlibrary/OpenCV-%{version}a.tar.bz2
+# Source0-md5:	876dce80ea2648b7e4d4c5a567b4d37b
 URL:		http://opencv.willowgarage.com
 BuildRequires:	cmake
 BuildRequires:	jasper-devel
@@ -54,7 +54,7 @@ Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 OpenCV Python bindings.
 
 %prep
-%setup -q
+%setup -qn opencv-%{version}
 
 rm -rf 3rdparty/{ilmimf,libjasper,libjpeg,libpng,libtiff,zlib}
 
