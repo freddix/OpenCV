@@ -1,12 +1,12 @@
 Summary:	A library of programming functions mainly aimed at real time computer vision
 Name:		OpenCV
-Version:	2.4.4
+Version:	2.4.5
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/opencvlibrary/OpenCV-%{version}a.tar.bz2
-# Source0-md5:	876dce80ea2648b7e4d4c5a567b4d37b
+Source0:	http://downloads.sourceforge.net/opencvlibrary/opencv-%{version}.tar.gz
+# Source0-md5:	8eac87462c7bec8b89021b723207c623
 URL:		http://opencv.willowgarage.com
 BuildRequires:	cmake
 BuildRequires:	jasper-devel
