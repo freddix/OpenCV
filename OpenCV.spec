@@ -1,12 +1,13 @@
 Summary:	A library of programming functions mainly aimed at real time computer vision
 Name:		OpenCV
-Version:	2.4.5
+Version:	2.4.6.1
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/opencvlibrary/opencv-%{version}.tar.gz
-# Source0-md5:	8eac87462c7bec8b89021b723207c623
+# Source0-md5:	d756bfa460891697571d5c90050e1cfe
+Patch0:		%{name}-pkgconfig.patch
 URL:		http://opencv.willowgarage.com
 BuildRequires:	cmake
 BuildRequires:	jasper-devel
@@ -55,8 +56,9 @@ OpenCV Python bindings.
 
 %prep
 %setup -qn opencv-%{version}
+%patch0 -p1
 
-rm -rf 3rdparty/{ilmimf,libjasper,libjpeg,libpng,libtiff,zlib}
+%{__rm} -r 3rdparty/{libjasper,libjpeg,libpng,libtiff,openexr,zlib}
 
 find -perm 755 -name "*.cpp" -exec chmod -x  {} ';'
 find -perm 755 -name "*.c" -exec chmod -x  {} ';'
@@ -72,12 +74,13 @@ cd build
 	-DBUILD_TESTS=0			\
 	-DBUILD_TESTS=OFF		\
 	-DENABLE_OPENMP=1		\
-	-DENABLE_SSE2=ON		\
-	-DENABLE_SSE3=OFF		\
+%ifarch %{ix86}
 	-DENABLE_SSE41=OFF		\
 	-DENABLE_SSE42=OFF		\
-	-DENABLE_SSE=ON			\
 	-DENABLE_SSSE3=OFF		\
+%else
+	-DENABLE_SSE3=OFF		\
+%endif
 	-DUSE_FAST_MATH=0		\
 	-DUSE_O3=0			\
 	-DUSE_OMIT_FRAME_POINTER=0	\
@@ -90,8 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm -rf $RPM_BUILD_ROOT%{_datadir}/opencv/samples
 
 %py_postclean
 
