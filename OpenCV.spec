@@ -1,17 +1,17 @@
 Summary:	A library of programming functions mainly aimed at real time computer vision
 Name:		OpenCV
-Version:	2.4.6.1
+Version:	2.4.8
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/opencvlibrary/opencv-%{version}.tar.gz
-# Source0-md5:	d756bfa460891697571d5c90050e1cfe
+Source0:	http://downloads.sourceforge.net/opencvlibrary/opencv-%{version}.zip
+# Source0-md5:	50cc1433b3654074206f5b3dbfd49848
 Patch0:		%{name}-pkgconfig.patch
 URL:		http://opencv.willowgarage.com
 BuildRequires:	cmake
+BuildRequires:	ffmpeg-devel
 BuildRequires:	jasper-devel
-BuildRequires:	libav-devel
 BuildRequires:	libdc1394-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
